@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot name="omni_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/robot/parts/base/base.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/parts/wheel/wheel.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/parts/knuckle/knuckle.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/robot_control_gazebo.xacro"/>
+  <xacro:property name="PI" value="3.14159274"/>
+
+  <xacro:arg name="robot_name" default="robot_1"/>
+
+  <!-- =============== Link & Joint =============== -->
+  <!-- Base -->
+  <link name="$(arg robot_name)_base_footprint"/>
+  <xacro:base robot_name="$(arg robot_name)" parent="$(arg robot_name)_base_footprint">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:base>
+
+  <!-- Suspension -->
+  <!-- Front Right Sus -->
+  <xacro:knuckle prefix="$(arg robot_name)_front_right" parent="$(arg robot_name)_base_link">
+	<origin xyz="0.9 -0.55 0.05" rpy="0 0 ${PI}"/>
+	<axis xyz="0 0 1"/>
+  </xacro:knuckle>
+  <!-- Front Left Sus -->
+  <xacro:knuckle prefix="$(arg robot_name)_front_left" parent="$(arg robot_name)_base_link">
+	<origin xyz="0.9 0.55 0.05" rpy="0 0 0"/>
+	<axis xyz="0 0 1"/>
+  </xacro:knuckle>
+
+  <!-- Wheels -->
+  <xacro:wheel prefix="$(arg robot_name)_fr" parent="$(arg robot_name)_front_right_knuckle_link">
+	  <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+	  <axis xyz="0 -1 0"/>
+  </xacro:wheel>
+
+  <xacro:wheel prefix="$(arg robot_name)_fl" parent="$(arg robot_name)_front_left_knuckle_link">
+	<origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+	<axis xyz="0 1 0"/>
+  </xacro:wheel>
+
+  <xacro:wheel prefix="$(arg robot_name)_rl" parent="$(arg robot_name)_base_link">
+	<origin xyz="-0.9 0.55 0.05" rpy="0 0 0"/>
+	<axis xyz="0 1 0"/>
+  </xacro:wheel>
+
+  <xacro:wheel prefix="$(arg robot_name)_rr" parent="$(arg robot_name)_base_link">
+	<origin xyz="-0.9 -0.55 0.05" rpy="0 0 ${PI}"/>
+	<axis xyz="0 -1 0"/>
+  </xacro:wheel>
+
+  <!-- =============== Gazebo =============== -->
+  <!-- Controllers -->
+  <xacro:robot_gazebo_systems robot_name="$(arg robot_name)"/>
+
+  <!-- Base -->
+  <xacro:base_gazebo_v0 robot_name="$(arg robot_name)"/>
+
+  <!-- Wheels -->
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_fr"/>
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_fl"/>
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_rl"/>
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_rr"/>
+
+</robot>

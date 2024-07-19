@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/robot/parts/base/base.gazebo"/>
+  
+  <xacro:macro name="base" params="parent robot_name *joint_origin">
+	  <joint name="${robot_name}_base_link_joint" type="fixed">
+	    <xacro:insert_block name="joint_origin"/>
+	    <parent link="${parent}"/>
+	    <child link="${robot_name}_base_link"/>
+	  </joint>
+
+	<link name="${robot_name}_base_link">
+	  <visual>
+		  <geometry>
+		    <mesh filename="package://robot_description/meshes/DAE/base/base_link_${robot_name}.dae"/>
+		  </geometry>
+	  </visual>
+	  <collision>
+		  <geometry>
+		    <mesh filename="package://robot_description/meshes/STL/base/base_link.stl"/>
+		  </geometry>
+	  </collision>
+	  <inertial>
+		  <origin xyz="0 0 0.32"/>
+		  <mass value="27"/> 
+		<inertia ixx="2.2" ixy="0" ixz="0" iyy="9.2" iyz="0" izz="10.6" />
+	  </inertial>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+                <kp>1e15</kp>
+                <kd>1e13</kd>
+              </ode>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0.01</restitution_coefficient>
+              <threshold>10</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <max_vel>0.01</max_vel>
+                <minDepth>0</minDepth>
+                <contact_surface_layer>0</contact_surface_layer>
+              </ode>
+            </contact>
+          </surface>
+	</link>
+  </xacro:macro>
+  
+</robot>

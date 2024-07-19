@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+  <world name="default">
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <name>cooperative_marl_stage_18m</name>
+      <uri>model://cooperative_marl_stage_18m</uri>
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+      </ros>
+      <update_rate>50</update_rate>
+    </plugin>
+
+  </world>
+</sdf>

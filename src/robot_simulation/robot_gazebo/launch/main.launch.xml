@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <include file="$(find-pkg-share robot_gazebo)/launch/start_world.launch.py"/>
+
+    <include file="$(find-pkg-share robot_gazebo)/launch/spawn_with_control.launch.xml">
+            <arg name="robot_name" value="robot_1"/>
+            <arg name="robot_file" value="robot.xacro"/>
+            <arg name="x_spawn" value="0"/>
+            <arg name="y_spawn" value="-3.0"/>
+            <arg name="z_spawn" value="0.5"/>
+            <arg name="roll_spawn" value="0.0"/>
+            <arg name="pitch_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="0.0"/>
+    </include>
+
+    <include file="$(find-pkg-share robot_gazebo)/launch/spawn_with_control.launch.xml">
+            <arg name="robot_name" value="robot_2"/>
+            <arg name="robot_file" value="robot.xacro"/>
+            <arg name="x_spawn" value="0"/>
+            <arg name="y_spawn" value="0.0"/>
+            <arg name="z_spawn" value="0.5"/>
+            <arg name="roll_spawn" value="0.0"/>
+            <arg name="pitch_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="0.0"/>
+    </include>
+
+    <include file="$(find-pkg-share robot_gazebo)/launch/spawn_with_control.launch.xml">
+            <arg name="robot_name" value="robot_3"/>
+            <arg name="robot_file" value="robot.xacro"/>
+            <arg name="x_spawn" value="0"/>
+            <arg name="y_spawn" value="3.0"/>
+            <arg name="z_spawn" value="0.5"/>
+            <arg name="roll_spawn" value="0.0"/>
+            <arg name="pitch_spawn" value="0.0"/>
+            <arg name="yaw_spawn" value="0.0"/>
+    </include>
+
+</launch>
