@@ -1,1 +1,5 @@
-/home/karan/cooperative_marl_ros/src/robot_control/scripts/marltoolkit/modules/mixers/__init__.py
+"""Utils package."""
+
+from .vdn import VDNMixer
+
+__all__ = ['VDNMixer']

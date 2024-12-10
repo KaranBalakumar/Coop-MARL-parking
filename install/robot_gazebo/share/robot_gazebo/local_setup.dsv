@@ -1,1 +1,2 @@
-/home/karan/cooperative_marl_ros/build/robot_gazebo/ament_cmake_environment_hooks/local_setup.dsv
+source;share/robot_gazebo/environment/ament_prefix_path.sh
+source;share/robot_gazebo/environment/path.sh

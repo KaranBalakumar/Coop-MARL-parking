@@ -1,1 +1,4 @@
-/home/karan/cooperative_marl_ros/src/robot_control/scripts/marltoolkit/agents/__init__.py
+from .base_agent import BaseAgent
+from .vdn_agent import VDNAgent
+
+__all__ = ['BaseAgent', 'VDNAgent']

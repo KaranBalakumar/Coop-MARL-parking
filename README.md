@@ -4,12 +4,14 @@ There are 3 car-like robots on the field, the field is 14x14 meter, in which the
 
 There is a safety zone/ boundary across each agent surrounding it. If these zones overlap with each other, or this zone overlaps with the black region, negative reward will be applied.
 
+![coopMarl](doc/coopMarl.gif)
+
 **State**
-- Location (x,y,$\theta$) of each agent and the difference of agent location and its respective goal i.e ($\Delta$ x, $\Delta$ y, $\Delta$ $\theta$).
+- Location (x, y, $\theta$) of each agent and the difference of agent location and its respective goal i.e ($\Delta$ x, $\Delta$ y, $\Delta$ $\theta$).
 - The state is described by 1-dimensional array with 18 elements.
 
 **Observation Space**
-- Each agent observes (x,y,$\theta$) and ($\Delta$ x, $\Delta$ y, $\Delta$ $\theta$).
+- Each agent observes (x, y, $\theta$) and ($\Delta$ x, $\Delta$ y, $\Delta$ $\theta$).
 - Each agent knows only its own goal only.
 - Observation space is described by 1-D array with 12 elements.
 
@@ -28,3 +30,14 @@ There is a safety zone/ boundary across each agent surrounding it. If these zone
 Here, [Value-Decomposition Networks](https://doi.org/10.48550/arXiv.1706.05296) is used. VDN copes with problem of cooperative multi-agent reinforcement learning with a single joint reward. Such problems are difficult because of large combined action, observation spaces and difficulty to determine an action that brings high reward not to a single agent bu to a whole team. VDN learns to decompose team value function into agent-wise value functions. The main assumption VDN makes and exploits is that the joint-value function for the system can be additively decomposed into value functions across agents. One approach to reducing the number of learnable parameters, is to share certain network weights between agents. Weight sharing also gives rise to the concept of agent invariance, which is useful for avoiding the lazy agent problem.
 
 Thanks to [deep-marl-toolkit](https://github.com/jianzhnie/deep-marl-toolkit).
+
+## Dependencies
+
+1. ROS2 Humble
+2. Gazebo Classic 11.10.2
+```c++
+sudo apt install ros-humble-gazebo-ros
+sudo apt install ros-humble-gazebo-ros2-control
+sudo apt install ros-humble-ros2-control
+sudo apt install ros-humble-ros2-controllers
+```
