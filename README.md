@@ -41,3 +41,5 @@ sudo apt install ros-humble-gazebo-ros2-control
 sudo apt install ros-humble-ros2-control
 sudo apt install ros-humble-ros2-controllers
 ```
+NOTE: There is a known bug of not activating multiple chainable controllers at once
+https://github.com/ros-controls/ros2_control/issues/1400
